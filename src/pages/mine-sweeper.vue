@@ -81,6 +81,17 @@
               required: true,
               message: `Should between ${MinMineCount} and ${MaxMineCount}`,
             },
+            {
+              // @ts-ignore
+              validator: (rule, value: number) => {
+                const { rowCount = MinRowCount, colCount = MinColCount } = formModel;
+                const density = value / rowCount / colCount;
+                if (density >= MinDensity && density <= MaxDensity) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('Unsuitable density'));
+              },
+            },
           ]"
         >
           <a-input-number
@@ -120,7 +131,7 @@
         role="button"
         tabindex="-1"
         @click.prevent.stop="handleClickMatrixItem(row, col)"
-        @contextmenu.prevent.stop="hanldeRightClickMatrixItem(row, col)"
+        @contextmenu.prevent.stop="handleRightClickMatrixItem(row, col)"
       >
         {{ getMatrixItemText(row, col) }}
       </div>
@@ -142,6 +153,8 @@ import {
   MaxColCount,
   MinMineCount,
   MaxMineCount,
+  MinDensity,
+  MaxDensity,
   DifficultyMap,
   Difficulties,
   type TDifficulty,
@@ -227,7 +240,7 @@ const handleClickMatrixItem = (row: number, col: number) => {
     matrix = newMatrix;
   }
 };
-const hanldeRightClickMatrixItem = (row: number, col: number) => {
+const handleRightClickMatrixItem = (row: number, col: number) => {
   if (status !== StatusMap.ended && matrix[row][col].status !== MatrixItemStatusMap.opened) {
     status = StatusMap.playing;
     const newMatrix = [...matrix];
