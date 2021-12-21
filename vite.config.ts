@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import pages from 'vite-plugin-pages';
 import env from 'vite-plugin-env-compatible';
@@ -12,6 +13,7 @@ export default defineConfig({
     vue({
       reactivityTransform: true,
     }),
+    vueJsx(),
     tsconfigPaths(),
     pages(),
     compression(),
