@@ -63,6 +63,6 @@
     "vite-plugin-pages": "~0.19.6",
     "vite-plugin-stylelint": "~1.1.0",
     "vite-tsconfig-paths": "~3.3.17",
-    "vue-tsc": "~0.29.8"
+    "vue-tsc": "~0.30.0"
   }
 }
