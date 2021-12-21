@@ -110,7 +110,9 @@
       <div
         v-for="(matrixItem, col) of rowItem"
         :key="col"
-        :class="`flex justify-center items-center w-5 h-5 m-px cursor-pointer transition flex-none ${
+        :class="`flex justify-center items-center w-5 h-5 m-px transition flex-none ${
+          status === StatusMap.ended ? 'cursor-default' : 'cursor-pointer'
+        } ${
           matrixItem.status === MatrixItemStatusMap.opened &&
           matrixItem.type === MatrixItemTypeMap.bomb
             ? 'bg-red-300'
