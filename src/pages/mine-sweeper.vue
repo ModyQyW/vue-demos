@@ -73,6 +73,7 @@
         <a-form-item
           name="mineCount"
           label="Mine"
+          :validate-first="true"
           :rules="[
             {
               type: 'number',
@@ -82,15 +83,7 @@
               message: `Should between ${MinMineCount} and ${MaxMineCount}`,
             },
             {
-              // @ts-ignore
-              validator: (rule, value: number) => {
-                const { rowCount = MinRowCount, colCount = MinColCount } = formModel;
-                const density = value / rowCount / colCount;
-                if (density >= MinDensity && density <= MaxDensity) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(new Error('Unsuitable density'));
-              },
+              validator: handleValidateMineCount,
             },
           ]"
         >
@@ -283,6 +276,15 @@ const handleChangeFormModel = () => {
       (item) =>
         item.rowCount === rowCount && item.colCount === colCount && item.mineCount === mineCount,
     )?.difficulty ?? DifficultyMap.custom;
+};
+// @ts-ignore
+const handleValidateMineCount = async (rule: any, value: number) => {
+  const { rowCount = MinRowCount, colCount = MinColCount } = formModel;
+  const density = value / rowCount / colCount;
+  if (density >= MinDensity && density <= MaxDensity) {
+    return Promise.resolve();
+  }
+  return Promise.reject(new Error('Unsuitable density'));
 };
 const handleFinish = async () => {
   const { rowCount, colCount, mineCount } = formModel;
