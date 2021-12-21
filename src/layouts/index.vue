@@ -39,13 +39,13 @@
             :href="`https://${pkg.author.name}.github.io/${pkg.name}/`"
             target="_blank"
           >
-            Github Page
+            Github Pages
           </a-typography-link>
           <a-typography-link
             :href="`https://${pkg.author.name}.gitee.io/${pkg.name}/`"
             target="_blank"
           >
-            Gitee Page
+            Gitee Pages
           </a-typography-link>
         </a-space>
       </a-row>
