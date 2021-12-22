@@ -4,3 +4,12 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+declare global {
+  type TOption<T = any, V = T> = {
+    label: T;
+    value: V;
+  };
+}
+
+export {};
