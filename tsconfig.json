@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "vite-plugin-pages/client"]
+    "types": ["vite/client", "vite-plugin-pages/client", "vue/macros-global"]
   },
   "include": [
     "./**/.*.js",
