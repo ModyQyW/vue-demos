@@ -141,28 +141,81 @@
 import { watchEffect } from 'vue';
 import { $ref } from 'vue/macros';
 import { Form } from 'ant-design-vue';
-import {
-  MinRowCount,
-  MaxRowCount,
-  MinColCount,
-  MaxColCount,
-  MinMineCount,
-  MaxMineCount,
-  MinDensity,
-  MaxDensity,
-  DifficultyMap,
-  Difficulties,
-  type TDifficulty,
-  type TParam,
-  PresetMap,
-  StatusMap,
-  type TStatus,
-  MatrixItemStatusMap,
-  MatrixItemTypeMap,
-  type TMatrix,
-  type TMatrixItem,
-} from '@/constants';
+import { Mutable } from 'type-fest';
 import { isEqual, uniqWith, randomInteger } from '@/utils';
+
+const MinRowCount = 9;
+const MaxRowCount = 24;
+
+const MinColCount = 9;
+const MaxColCount = 30;
+
+const MinMineCount = 10;
+const MaxMineCount = 668;
+
+const MinDensity = 0.1;
+const MaxDensity = 0.21;
+
+const DifficultyMap = {
+  custom: {
+    difficulty: 'custom',
+    rowCount: MinRowCount,
+    colCount: MinColCount,
+    mineCount: MinMineCount,
+  },
+  easy: {
+    difficulty: 'easy',
+    rowCount: 9,
+    colCount: 9,
+    mineCount: 10,
+  },
+  medium: {
+    difficulty: 'medium',
+    rowCount: 16,
+    colCount: 16,
+    mineCount: 40,
+  },
+  hard: {
+    difficulty: 'hard',
+    rowCount: 16,
+    colCount: 30,
+    mineCount: 99,
+  },
+} as const;
+type TDifficulty = keyof typeof DifficultyMap;
+const Difficulties: TOption<TDifficulty>[] = (Object.keys(DifficultyMap) as Array<TDifficulty>).map(
+  (item) => ({
+    label: item,
+    value: item,
+  }),
+);
+
+const StatusMap = {
+  default: 'default',
+  playing: 'playing',
+  ended: 'ended',
+} as const;
+type TStatus = keyof typeof StatusMap;
+
+const MatrixItemStatusMap = {
+  default: 'default',
+  flagged: 'flagged',
+  opened: 'opened',
+} as const;
+type TMatrixItemStatus = keyof typeof MatrixItemStatusMap;
+
+const MatrixItemTypeMap = {
+  bomb: 'bomb',
+  empty: 'empty',
+  number: 'number',
+} as const;
+type TMatrixItemType = keyof typeof MatrixItemTypeMap;
+
+type TMatrixItem = {
+  type: TMatrixItemType;
+  status: TMatrixItemStatus;
+};
+type TMatrix = TMatrixItem[][];
 
 let status = $ref<TStatus>(StatusMap.default);
 
@@ -262,22 +315,22 @@ watchEffect(() => {
   }
 });
 
-let formModel = $ref<TParam>({
-  ...PresetMap.easy,
+let formModel = $ref<Mutable<typeof DifficultyMap[TDifficulty]>>({
+  ...DifficultyMap.easy,
 });
 const form = Form.useForm(formModel);
 const handleChangeDifficulty = (difficulty: TDifficulty) => {
   formModel = {
-    ...PresetMap[difficulty],
+    ...DifficultyMap[difficulty],
   };
 };
 const handleChangeFormModel = () => {
   const { rowCount, colCount, mineCount } = formModel;
   formModel.difficulty =
-    Object.values(PresetMap).find(
+    Object.values(DifficultyMap).find(
       (item) =>
         item.rowCount === rowCount && item.colCount === colCount && item.mineCount === mineCount,
-    )?.difficulty ?? DifficultyMap.custom;
+    )?.difficulty ?? 'custom';
 };
 // @ts-ignore
 const handleValidateMineCount = async (rule: any, value: number) => {
