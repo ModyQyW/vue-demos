@@ -1,17 +1,20 @@
 # vue-demos
 
+English | [简体中文](./README.zh-Hans.md)
+
 Demos in Vue.
 
+- [mdn](https://developer.mozilla.org/)
 - [typescript](https://www.typescriptlang.org/)
   - [typescript deep dive](https://basarat.gitbook.io/typescript/)
   - [type challenges](https://github.com/type-challenges/type-challenges)
   - [type-fest](https://github.com/sindresorhus/type-fest)
+  - [vue-tsc](https://github.com/johnsoncodehk/volar)
 - [@modyqyw/utils](https://github.com/ModyQyW/utils)
 - [tailwindcss](https://tailwindcss.com/)
 - [vue](https://v3.vuejs.org/)
 - [ant-design-vue](https://next.antdv.com/)
 - [vue-use](https://vueuse.org/)
-- [vue-tsc](https://github.com/johnsoncodehk/volar)
 - [vite](https://vitejs.dev/)
   - [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
   - [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
