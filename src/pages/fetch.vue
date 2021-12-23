@@ -20,10 +20,12 @@
         class="mt-4"
         :data-source="repositories"
         row-key="id"
+        size="small"
         :pagination="{
           current: page,
           pageSize: 10,
           total,
+          size: 'small',
           position: ['topCenter', 'bottomCenter'],
           showSizeChanger: false,
           onChange: handleChangePagination,
@@ -32,18 +34,17 @@
           {
             title: 'Name',
             dataIndex: 'full_name',
-          },
-          {
-            title: 'Issues',
-            dataIndex: 'open_issues_count',
+            ellipsis: true,
           },
           {
             title: 'Stars',
             dataIndex: 'stargazers_count',
+            width: 80,
           },
           {
             title: 'Forks',
             dataIndex: 'forks_count',
+            width: 80,
           },
         ]"
       />
@@ -70,7 +71,6 @@ type TRepository = {
   url: string;
   stargazers_count: number;
   forks_count: number;
-  open_issues_count: number;
 };
 
 type TCache = Record<string, TRepository[]>;
