@@ -23,7 +23,7 @@
         size="small"
         :pagination="{
           current: page,
-          pageSize: 10,
+          pageSize: Limit,
           total,
           size: 'small',
           position: ['topCenter', 'bottomCenter'],
@@ -65,6 +65,8 @@ const Services: TOption<TService>[] = (Object.keys(ServiceMap) as Array<TService
   value: item,
 }));
 
+const Limit = 10;
+
 type TRepository = {
   id: number;
   full_name: string;
@@ -75,7 +77,7 @@ type TRepository = {
 
 type TCache = Record<string, TRepository[]>;
 
-const getCacheKey = (service: typeof ServiceMap[TService], param: Record<string, any>) =>
+const getCacheKey = (service: TService, param: Record<string, any>) =>
   JSON.stringify([service, param]);
 
 const cacheRef = $ref<TCache>({});
@@ -90,13 +92,13 @@ let error = $ref<Error | null>(null);
 const handleSearch = () => {
   isLoading = true;
   error = null;
-  const key = getCacheKey(ServiceMap[service as TService], { keyword, page });
+  const key = getCacheKey(service, { keyword, page });
   if (cacheRef[key]) {
     repositories = cacheRef[key];
     isLoading = false;
     return;
   }
-  fetch(`${ServiceMap[service as TService]}?q=${keyword}&page=${page}&per_page=10`)
+  fetch(`${ServiceMap[service as TService]}?q=${keyword}&page=${page}&per_page=${Limit}`)
     .then((response) => {
       if (response.ok) {
         const newTotal = response.headers.get('total_count') ?? '';
