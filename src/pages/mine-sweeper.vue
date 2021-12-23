@@ -153,7 +153,7 @@ const MinMineCount = 10;
 const MaxMineCount = 668;
 
 const MinDensity = 0.1;
-const MaxDensity = 0.21;
+const MaxDensity = 0.93;
 
 const DifficultyMap = {
   custom: {
@@ -211,8 +211,8 @@ const MatrixItemTypeMap = {
 type TMatrixItemType = keyof typeof MatrixItemTypeMap;
 
 type TMatrixItem = {
-  type: TMatrixItemType;
   status: TMatrixItemStatus;
+  type: TMatrixItemType;
 };
 type TMatrix = TMatrixItem[][];
 
