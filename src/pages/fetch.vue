@@ -54,13 +54,14 @@
 
 <script setup lang="ts">
 import { watch } from 'vue';
+import { objectKeys } from '@/utils';
 
 const ServiceMap = {
   github: 'https://api.github.com/search/repositories',
   gitee: 'https://gitee.com/api/v5/search/repositories',
 } as const;
 type TService = keyof typeof ServiceMap;
-const Services: TOption<TService>[] = (Object.keys(ServiceMap) as Array<TService>).map((item) => ({
+const Services: TOption<TService>[] = objectKeys(ServiceMap).map((item) => ({
   label: item,
   value: item,
 }));

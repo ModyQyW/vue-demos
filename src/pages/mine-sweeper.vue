@@ -8,7 +8,7 @@
           :rules="[
             {
               type: 'enum',
-              enum: Object.keys(DifficultyMap),
+              enum: objectKeys(DifficultyMap),
               required: true,
               message: 'Please select',
             },
@@ -141,7 +141,7 @@
 import { watchEffect } from 'vue';
 import { Form } from 'ant-design-vue';
 import { Mutable } from 'type-fest';
-import { isEqual, uniqWith, randomInteger } from '@/utils';
+import { isEqual, uniqWith, randomInteger, objectKeys } from '@/utils';
 
 const MinRowCount = 9;
 const MaxRowCount = 24;
@@ -182,12 +182,10 @@ const DifficultyMap = {
   },
 } as const;
 type TDifficulty = keyof typeof DifficultyMap;
-const Difficulties: TOption<TDifficulty>[] = (Object.keys(DifficultyMap) as Array<TDifficulty>).map(
-  (item) => ({
-    label: item,
-    value: item,
-  }),
-);
+const Difficulties: TOption<TDifficulty>[] = objectKeys(DifficultyMap).map((item) => ({
+  label: item,
+  value: item,
+}));
 
 const StatusMap = {
   default: 'default',
