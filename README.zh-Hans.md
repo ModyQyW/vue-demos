@@ -2,7 +2,7 @@
 
 [English](./README.md) | 简体中文
 
-使用 Vue 编写的示例代码。
+基于 [react-demos](https://github.com/ModyQyW/react-demos)，使用 Vue 编写的示例代码。
 
 - [mdn](https://developer.mozilla.org/)
 - [typescript](https://www.typescriptlang.org/)

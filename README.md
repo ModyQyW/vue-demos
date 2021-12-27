@@ -2,7 +2,7 @@
 
 English | [简体中文](./README.zh-Hans.md)
 
-Demos in Vue.
+Demos in Vue based on [react-demos](https://github.com/ModyQyW/react-demos).
 
 - [mdn](https://developer.mozilla.org/)
 - [typescript](https://www.typescriptlang.org/)
