@@ -5,7 +5,7 @@ specifiers:
   '@babel/eslint-parser': ~7.16.5
   '@commitlint/cli': ~16.0.0
   '@iconify/vue': ~3.1.1
-  '@modyqyw/fabric': ~4.6.0
+  '@modyqyw/fabric': ~4.6.1
   '@modyqyw/utils': ~2.1.1
   '@types/browser-update': ~3.3.0
   '@typescript-eslint/eslint-plugin': ~5.8.0
@@ -55,7 +55,7 @@ devDependencies:
   '@babel/core': 7.16.5
   '@babel/eslint-parser': 7.16.5_@babel+core@7.16.5+eslint@8.5.0
   '@commitlint/cli': 16.0.0
-  '@modyqyw/fabric': 4.6.0_653c1ef054ae37c6df376967a0a3f63b
+  '@modyqyw/fabric': 4.6.1_653c1ef054ae37c6df376967a0a3f63b
   '@types/browser-update': 3.3.0
   '@typescript-eslint/eslint-plugin': 5.8.0_836011a006f4f5d67178564baf2b6d34
   '@typescript-eslint/parser': 5.8.0_eslint@8.5.0+typescript@4.5.4
@@ -751,8 +751,8 @@ packages:
       vue: 3.2.26
     dev: false
 
-  /@modyqyw/fabric/4.6.0_653c1ef054ae37c6df376967a0a3f63b:
-    resolution: {integrity: sha512-PRV2KXK3eLhQmRhzc5zw57iueIsuuNANtuTZzq/As0RBfzJ3N3+bu5iv3/pdryyqGGSELvh85AO2jmk+o4OIJw==}
+  /@modyqyw/fabric/4.6.1_653c1ef054ae37c6df376967a0a3f63b:
+    resolution: {integrity: sha512-ZgOPuNgLKJJPALCbpM6h6LiRAmc7+H89arJ7d1T3AAD5Hw/lob7Ym4qurZd7VzbDqhuTjvtvDEEHvtTGp2SJZg==}
     engines: {node: ^12.22.6 || ^14.17.6 || ^16.8.0}
     hasBin: true
     dependencies:
