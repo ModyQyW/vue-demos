@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "vite-plugin-pages/client", "vue/macros-global"]
+    "types": ["type-fest", "vite/client", "vite-plugin-pages/client", "vue/macros-global"]
   },
   "include": [
     "./**/.*.js",
@@ -14,7 +14,8 @@
     "./**/.*.ts",
     "./**/*.ts",
     "./**/*.tsx",
-    "./**/*.vue"
+    "./**/*.vue",
+    "./**/*.svelte"
   ],
   "exclude": [".cache", ".temp", ".tmp", "dist*", "node_modules"]
 }
