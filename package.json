@@ -28,7 +28,7 @@
     "@iconify/vue": "~3.1.1",
     "@modyqyw/utils": "~2.1.1",
     "@vueuse/core": "~7.4.1",
-    "@vueuse/router": "~7.4.1",
+    "@vueuse/router": "~7.5.0",
     "ant-design-vue": "~3.0.0-beta.2",
     "browser-update": "~3.3.37",
     "type-fest": "~2.8.0",
